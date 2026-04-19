@@ -7,6 +7,7 @@ export default function Navbar() {
       <Link href="/fashion">FASHION</Link>
       <Link href="/fitness">FITNESS</Link>
       <Link href="/lifestyle">LIFESTYLE</Link>
+      <Link href="/social">SOCIAL</Link>
     </nav>
   );
 }
