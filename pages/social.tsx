@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 const links = [
   {
     name: "Instagram",
-    url: "https://instagram.com/yourusername"
+    url: "https://instagram.com/vzxayy"
   },
   {
     name: "TikTok",
