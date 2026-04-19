@@ -7,19 +7,15 @@ const links = [
   },
   {
     name: "TikTok",
-    url: "https://tiktok.com/@yourusername"
+    url: "https://tiktok.com/xayyleon"
   },
   {
     name: "Twitter / X",
     url: "https://x.com/yourusername"
   },
   {
-    name: "YouTube",
-    url: "https://youtube.com/@yourchannel"
-  },
-  {
     name: "Email",
-    url: "mailto:youremail@gmail.com"
+    url: "jx02092025@gmail.com"
   }
 ];
 
