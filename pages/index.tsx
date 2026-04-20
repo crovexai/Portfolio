@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="hero">
-        <h1>RAYER VAN-RISTELL</h1>
+        <h1>Xander Herdia-Leon</h1>
         <p>MODEL PORTFOLIO</p>
       </div>
 

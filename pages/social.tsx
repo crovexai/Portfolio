@@ -24,7 +24,7 @@ export default function SocialPage() {
     <Layout>
       <div className="social-page">
 
-        <h1 className="social-title">RAYER VAN-RISTELL</h1>
+        <h1 className="social-title">Xander Herdia-Leon</h1>
         <p className="social-sub">Connect with me</p>
 
         <div className="social-links">
