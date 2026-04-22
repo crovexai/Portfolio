@@ -1,10 +1,10 @@
 export const homeImages = [
-  "/images/home/1.jpg",
-  "/images/home/2.jpg",
-  "/images/home/3.jpg",
-  "/images/home/4.jpg",
-  "/images/home/5.jpg",
-  "/images/home/6.jpg"
+  "/images/home/img-home-1.jpg",
+  "/images/home/img-home-2.jpg",
+  "/images/home/img-home-3.jpg",
+  "/images/home/img-home-4.jpg",
+  "/images/home/img-home-5.jpg",
+  "/images/home/img-home-6.jpg"
 ];
 
 export const fashionImages = [
