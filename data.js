@@ -1,13 +1,13 @@
-export const homeImages = [
+const homeImages = [
   "/images/home/img-home-1.jpg",
   "/images/home/img-home-2.jpg",
-  "/images/home/img-home-3.jpg",
+  "/images/home/img-home-3.png",
   "/images/home/img-home-4.jpg",
   "/images/home/img-home-5.jpg",
   "/images/home/img-home-6.jpg"
 ];
 
-export const fashionImages = [
+const fashionImages = [
   "/images/fashion/img-fashion-1.jpg",
   "/images/fashion/img-fashion-2.jpg",
   "/images/fashion/img-fashion-3.jpg",
@@ -16,7 +16,7 @@ export const fashionImages = [
   "/images/fashion/img-fashion-6.jpg"
 ];
 
-export const fitnessImages = [
+const fitnessImages = [
   "/images/fitness/img-fitness-1.jpg",
   "/images/fitness/img-fitness-2.jpg",
   "/images/fitness/img-fitness-3.jpg",
@@ -25,7 +25,7 @@ export const fitnessImages = [
   "/images/fitness/img-fitness-6.jpg"
 ];
 
-export const lifestyleImages = [
+const lifestyleImages = [
   "/images/lifestyle/img-lifestyle-1.jpg",
   "/images/lifestyle/img-lifestyle-2.jpg",
   "/images/lifestyle/img-lifestyle-3.jpg",
