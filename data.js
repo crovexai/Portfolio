@@ -7,40 +7,37 @@ const homeImages = [
   "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp"
 ];
 
-const fashionImages = [
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fashion/img-fashion-1.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fashion/img-fashion-2.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fashion/img-fashion-3.png",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fashion/img-fashion-4.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fashion/img-fashion-5.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fashion/img-fashion-6.jpg"
+const fashionImages = [];
+
+const commercialImages = [
+  // ADD YOUR COMMERCIAL IMAGES HERE LATER
 ];
 
-const fitnessImages = [
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fitness/img-fitness-1.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fitness/img-fitness-2.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fitness/img-fitness-3.png",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fitness/img-fitness-4.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fitness/img-fitness-5.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/fitness/img-fitness-6.jpg"
-];
-
-const lifestyleImages = [
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/lifestyle/img-lifestyle-1.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/lifestyle/img-lifestyle-2.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/lifestyle/img-lifestyle-3.png",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/lifestyle/img-lifestyle-4.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/lifestyle/img-lifestyle-5.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto:eco,w_1400/lifestyle/img-lifestyle-6.jpg"
-];
+const lifestyleImages = [];
 
 function renderGallery(images) {
   const grid = document.getElementById("gallery");
 
   grid.innerHTML = images.map((src, i) => `
-    <div class="img-wrap">
+    <div class="img-wrap" onclick="openLightbox(${i})">
       <img src="${src}" class="img" alt="Model photo ${i + 1}" loading="lazy">
       <div class="overlay">VIEW</div>
     </div>
   `).join("");
+
+  window.currentImages = images;
+}
+
+/* LIGHTBOX */
+
+function openLightbox(index) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+
+  img.src = window.currentImages[index];
+  lightbox.classList.add("active");
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("active");
 }
