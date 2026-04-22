@@ -1,8 +1,8 @@
 const homeImages = [
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-1_cxlash.webp",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-4_wqqgw7.webp",
   "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-2_kfaujz.webp",
   "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-3_wd6oaa.webp",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-4_wqqgw7.webp",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-1_cxlash.webp",
   "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-5_mud39s.webp",
   "https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp"
 ];
