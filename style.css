@@ -188,4 +188,71 @@ body {
   .hero h1 {
     font-size: 40px;
   }
+
+/* PROFILE IMAGE */
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 2px solid #333;
+}
+
+/* SOCIAL PAGE */
+
+.social-page {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.social-title {
+  margin-bottom: 30px;
+}
+
+/* TOP ICONS (VERTICAL STACK) */
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.social-icons a {
+  font-size: 26px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* BUTTON LINKS */
+
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.social-buttons a {
+  padding: 15px;
+  border: 1px solid #333;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.social-buttons a:hover {
+  background: white;
+  color: black;
+}
 }
