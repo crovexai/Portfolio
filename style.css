@@ -5,41 +5,33 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* CONTAINER */
-
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
-  padding: 50px 20px;
+  padding: 40px 20px;
 }
 
 /* NAV */
 
 .nav {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .nav a {
   color: #aaa;
   text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 3px;
   position: relative;
-  transition: 0.3s;
-}
-
-.nav a:hover {
-  color: white;
 }
 
 .nav a::after {
   content: "";
   position: absolute;
-  bottom: -6px;
+  bottom: -5px;
   left: 0;
   width: 0%;
   height: 1px;
@@ -55,44 +47,27 @@ body {
 
 .hero {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .hero h1 {
-  font-size: 80px;
-  letter-spacing: 6px;
+  font-size: 70px;
+  letter-spacing: 4px;
   margin: 0;
 }
 
 .hero p {
   font-size: 13px;
   color: #666;
-  letter-spacing: 3px;
-  text-transform: uppercase;
 }
 
-/* TITLES */
-
-.title {
-  text-align: center;
-  margin-bottom: 40px;
-  letter-spacing: 3px;
-}
-
-/* GRID (EDITORIAL) */
+/* GRID */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 250px;
-  gap: 30px;
-}
-
-/* HERO IMAGE (TOP LEFT BIG) */
-
-.img-wrap.hero {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 2;
+  gap: 25px;
+  margin-top: 30px;
 }
 
 /* IMAGE */
@@ -100,20 +75,19 @@ body {
 .img-wrap {
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  transition: 0.3s;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
 }
 
-.img-wrap:hover .img {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+.img:hover {
+  transform: scale(1.03);
 }
 
 /* OVERLAY */
@@ -122,7 +96,7 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background: rgba(0,0,0,0.6);
   text-align: center;
   opacity: 0;
@@ -135,123 +109,59 @@ body {
   opacity: 1;
 }
 
-/* LIGHTBOX */
-
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 999;
-}
-
-.lightbox.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
 /* SOCIAL PAGE */
 
 .social-page {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
-/* PROFILE IMAGE */
-
-.profile-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
+.social-title {
+  font-size: 40px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
 }
 
-/* ICONS (VERTICAL) */
-
-.social-icons {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.social-sub {
+  color: #888;
   margin-bottom: 40px;
-  align-items: center;
 }
 
-.social-svg {
-  width: 28px;
-  height: 28px;
-  fill: white;
-  transition: 0.3s;
-}
+/* 🔥 FIXED SOCIAL BUTTONS */
 
-.social-icons a:hover .social-svg {
-  transform: scale(1.2);
-}
-
-/* BUTTON LINKS */
-
-.social-buttons {
+.social-links {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
-  max-width: 420px;
+  max-width: 500px;
   margin: auto;
 }
 
-.social-buttons a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px;
+.social-btn {
+  display: inline-block;
+  padding: 12px 20px;
   border: 1px solid #333;
   color: white;
   text-decoration: none;
   letter-spacing: 2px;
-  transition: 0.3s;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
 }
 
-.social-buttons a:hover {
+.social-btn:hover {
   background: white;
   color: black;
 }
 
-.btn-icon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
+/* ANIMATION */
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 /* MOBILE */
@@ -259,75 +169,15 @@ body {
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 200px;
-  }
-
-  .img-wrap.hero {
-    grid-column: span 2;
-    grid-row: span 1;
   }
 }
 
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-  }
-
-  .img-wrap.hero {
-    grid-column: span 1;
-    grid-row: span 1;
   }
 
   .hero h1 {
     font-size: 40px;
   }
-  /* BRAND COLORS */
-
-[data-platform="instagram"]:hover {
-  background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
-}
-
-[data-platform="youtube"]:hover {
-  background: #ff0000;
-}
-
-[data-platform="tiktok"]:hover {
-  background: #111;
-  color: #25f4ee;
-}
-
-[data-platform="x"]:hover {
-  background: #111;
-}
-
-[data-platform="facebook"]:hover {
-  background: #1877f2;
-}
-
-[data-platform="discord"]:hover {
-  background: #5865f2;
-}
-
-[data-platform="email"]:hover {
-  background: #444;
-}
-
-/* ICON ANIMATION */
-
-.social-svg {
-  transition: transform 0.3s ease;
-}
-
-.social-icons a:hover .social-svg {
-  transform: scale(1.25) rotate(4deg);
-}
-
-.btn-icon {
-  transition: transform 0.3s ease;
-}
-
-.social-buttons a:hover .btn-icon {
-  transform: translateX(6px);
-}
 }
