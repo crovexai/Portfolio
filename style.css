@@ -75,7 +75,6 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  margin-top: 30px;
 }
 
 /* IMAGE */
@@ -171,7 +170,6 @@ body {
 
 .social-title {
   font-size: 40px;
-  margin-bottom: 10px;
 }
 
 .social-sub {
