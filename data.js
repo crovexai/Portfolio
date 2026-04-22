@@ -1,10 +1,10 @@
 const homeImages = [
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-1.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-2.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-3.png",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-4.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-5.jpg",
-  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-6.jpg"
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-1_cxlash",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-2_kfaujz",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-3_wd6oaa",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-4_wqqgw7",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-5_mud39s",
+  "https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto,w_1600/home/img-home-6_rhleyv"
 ];
 
 const fashionImages = [
