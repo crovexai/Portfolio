@@ -33,3 +33,8 @@ const lifestyleImages = [
   "/images/lifestyle/img-lifestyle-5.jpg",
   "/images/lifestyle/img-lifestyle-6.jpg"
 ];
+
+function renderGallery(images) {
+  const grid = document.querySelector(".grid");
+  grid.innerHTML = images.map((src, i) => `<img src="${src}" class="img" alt="Gallery image">`).join("");
+}
