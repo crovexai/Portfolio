@@ -38,11 +38,9 @@ function renderGallery(images) {
   const grid = document.getElementById("gallery");
 
   grid.innerHTML = images.map((src, i) => `
-    <img 
-      src="${src}" 
-      class="img" 
-      alt="Model photo ${i + 1}" 
-      loading="lazy"
-    >
+    <div class="img-wrap">
+      <img src="${src}" class="img" alt="Model photo ${i + 1}" loading="lazy">
+      <div class="overlay">VIEW</div>
+    </div>
   `).join("");
 }
