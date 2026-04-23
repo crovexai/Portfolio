@@ -18,15 +18,15 @@
   <!-- ICON ROW -->
   <div class="icon-row">
 
-    <a href="YOUR_FACEBOOK_LINK" target="_blank" class="icon-img-btn">
+    <a href="YOUR_FACEBOOK_LINK" class="icon-img-btn">
       <img src="FACEBOOK_IMAGE_URL">
     </a>
 
-    <a href="https://instagram.com/vzxayy" target="_blank" class="icon-img-btn center-icon">
+    <a href="https://instagram.com/vzxayy" class="icon-img-btn center-icon">
       <img src="INSTAGRAM_IMAGE_URL">
     </a>
 
-    <a href="YOUR_DISCORD_LINK" target="_blank" class="icon-img-btn">
+    <a href="YOUR_DISCORD_LINK" class="icon-img-btn">
       <img src="DISCORD_IMAGE_URL">
     </a>
 
@@ -35,29 +35,67 @@
   <!-- BUTTON STACK -->
   <div class="button-stack">
 
-    <a href="https://www.tiktok.com/@xayyleon" target="_blank" class="big-img-btn">
+    <a href="https://www.tiktok.com/@xayyleon" class="big-img-btn">
       <img src="TIKTOK_IMAGE_URL">
     </a>
 
-    <a href="https://x.com/yourusername" target="_blank" class="big-img-btn">
+    <a href="https://x.com/yourusername" class="big-img-btn">
       <img src="TWITTER_IMAGE_URL">
     </a>
 
-    <a href="YOUR_YOUTUBE_LINK" target="_blank" class="big-img-btn">
+    <a href="YOUR_YOUTUBE_LINK" class="big-img-btn">
       <img src="YOUTUBE_IMAGE_URL">
     </a>
 
-    <a href="YOUR_AMAZON_LINK" target="_blank" class="big-img-btn">
+    <a href="YOUR_AMAZON_LINK" class="big-img-btn">
       <img src="AMAZON_IMAGE_URL">
     </a>
 
-    <a href="YOUR_CASHAPP_LINK" target="_blank" class="big-img-btn">
+    <a href="YOUR_CASHAPP_LINK" class="big-img-btn">
       <img src="CASHAPP_IMAGE_URL">
     </a>
 
   </div>
 
 </div>
+
+<!-- INTERACTIONS -->
+<script>
+document.querySelectorAll('.icon-img-btn, .big-img-btn').forEach(el => {
+
+  // PARALLAX
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = ((y / rect.height) - 0.5) * -10;
+    const rotateY = ((x / rect.width) - 0.5) * 10;
+
+    el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
+
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+  });
+
+  // RIPPLE
+  el.addEventListener('click', function(e) {
+    const circle = document.createElement("span");
+    const d = Math.max(this.clientWidth, this.clientHeight);
+
+    circle.style.width = circle.style.height = d + "px";
+    circle.style.left = e.offsetX - d/2 + "px";
+    circle.style.top = e.offsetY - d/2 + "px";
+
+    circle.classList.add("ripple");
+    this.appendChild(circle);
+
+    setTimeout(() => circle.remove(), 600);
+  });
+
+});
+</script>
 
 </body>
 </html>
