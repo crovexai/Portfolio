@@ -1,4 +1,143 @@
-/* SOCIAL PAGE LAYOUT */
+/* ===== BASE ===== */
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #111, #000);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ===== NAV ===== */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px 0;
+}
+
+.nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.hero h1 {
+  font-size: 60px;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ===== GRID ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 0 20px;
+}
+
+/* BIG FIRST IMAGE */
+
+.hero.img-wrap {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ===== IMAGE ===== */
+
+.img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+/* HOVER EFFECT */
+
+.img-wrap:hover .img {
+  transform: scale(1.05);
+}
+
+/* OVERLAY */
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  text-align: center;
+  opacity: 0;
+  transition: 0.3s;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.img-wrap:hover .overlay {
+  opacity: 1;
+}
+
+/* ===== LIGHTBOX ===== */
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+/* ===== SOCIAL PAGE ===== */
 
 .social-container {
   display: flex;
@@ -10,11 +149,12 @@
 /* PROFILE */
 
 .profile-img {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #222;
+  box-shadow: 0 0 30px rgba(255,255,255,0.05);
 }
 
 .name {
@@ -27,14 +167,16 @@
 
 .icon-row {
   display: flex;
-  align-items: center;
   gap: 25px;
   margin: 25px 0;
 }
 
 .icon-btn {
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
   border: 1px solid #222;
   display: flex;
   align-items: center;
@@ -48,18 +190,22 @@
   fill: white;
 }
 
-.icon-btn:hover {
-  background: white;
-}
-
-.icon-btn:hover svg {
-  fill: black;
-}
-
-/* CENTER INSTAGRAM BIGGER */
+/* CENTER INSTAGRAM */
 
 .center-icon {
-  transform: scale(1.15);
+  transform: scale(1.2);
+}
+
+/* BRAND HOVERS */
+
+.icon-btn:nth-child(1):hover { background: #1877f2; } /* Facebook */
+.icon-btn:nth-child(2):hover { 
+  background: radial-gradient(circle at 30% 30%, #feda75, #d62976, #962fbf);
+}
+.icon-btn:nth-child(3):hover { background: #5865f2; } /* Discord */
+
+.icon-btn:hover svg {
+  transform: scale(1.1);
 }
 
 /* BUTTON STACK */
@@ -73,18 +219,48 @@
 }
 
 .big-btn {
-  display: block;
-  padding: 14px;
+  padding: 15px;
   text-align: center;
-  border: 1px solid #333;
-  color: white;
+  border-radius: 8px;
   text-decoration: none;
+  color: white;
   letter-spacing: 2px;
   font-size: 13px;
-  transition: 0.3s;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #222;
+  backdrop-filter: blur(10px);
+  transition: 0.25s;
 }
 
+/* HOVER EFFECT */
+
 .big-btn:hover {
-  background: white;
-  color: black;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* PLATFORM COLORS */
+
+.big-btn:nth-child(1):hover { background: linear-gradient(45deg, #00f2ea, #ff0050); }
+.big-btn:nth-child(2):hover { background: #111; }
+.big-btn:nth-child(3):hover { background: #ff0000; }
+.big-btn:nth-child(4):hover { background: #ff9900; color: black; }
+.big-btn:nth-child(5):hover { background: #00c244; }
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
 }
