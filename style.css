@@ -5,139 +5,54 @@ body {
   background: radial-gradient(circle at top, #111, #000);
   color: white;
   font-family: 'Helvetica Neue', Arial, sans-serif;
+  perspective: 1000px;
 }
 
-/* ===== NAV ===== */
+/* ===== CINEMATIC BACKGROUND ===== */
 
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 20px 0;
-}
-
-.nav a {
-  color: #aaa;
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 3px;
-  position: relative;
-}
-
-.nav a::after {
+body::before {
   content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 1px;
-  background: white;
-  transition: 0.3s;
-}
-
-.nav a:hover::after {
-  width: 100%;
-}
-
-/* ===== HERO ===== */
-
-.hero {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.hero h1 {
-  font-size: 60px;
-  letter-spacing: 4px;
-  margin: 0;
-}
-
-.hero p {
-  font-size: 13px;
-  color: #666;
-}
-
-/* ===== GRID ===== */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  padding: 0 20px;
-}
-
-/* BIG FIRST IMAGE */
-
-.hero.img-wrap {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-/* ===== IMAGE ===== */
-
-.img-wrap {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.4s;
-}
-
-/* HOVER EFFECT */
-
-.img-wrap:hover .img {
-  transform: scale(1.05);
-}
-
-/* OVERLAY */
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  text-align: center;
-  opacity: 0;
-  transition: 0.3s;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.img-wrap:hover .overlay {
-  opacity: 1;
-}
-
-/* ===== LIGHTBOX ===== */
-
-.lightbox {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,200,0,0.08), transparent 40%),
+              radial-gradient(circle at 70% 70%, rgba(255,150,0,0.06), transparent 40%);
+  animation: bgMove 20s linear infinite;
+  z-index: -2;
+}
+
+@keyframes bgMove {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(50px,50px); }
+  100% { transform: translate(0,0); }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,180,0,0.15), transparent 70%);
+  top: 20%;
+  left: 60%;
+  filter: blur(120px);
+  z-index: -1;
+}
+
+html::before {
+  content: "";
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.95);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.lightbox.active {
-  display: flex;
-}
-
-/* ===== SOCIAL PAGE ===== */
+/* ===== SOCIAL ===== */
 
 .social-container {
   display: flex;
@@ -146,15 +61,13 @@ body {
   margin-top: 60px;
 }
 
-/* PROFILE */
-
 .profile-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #222;
-  box-shadow: 0 0 30px rgba(255,255,255,0.05);
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
 }
 
 .name {
@@ -163,104 +76,112 @@ body {
   letter-spacing: 2px;
 }
 
-/* ICON ROW */
+/* ===== ICON ROW ===== */
 
 .icon-row {
   display: flex;
   gap: 25px;
-  margin: 25px 0;
+  margin: 30px 0;
 }
 
-.icon-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.icon-img-btn {
+  width: 85px;
+  height: 85px;
+  display: block;
+  position: relative;
   transition: 0.3s;
 }
 
-.icon-btn svg {
-  width: 26px;
-  height: 26px;
-  fill: white;
+.icon-img-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
 }
-
-/* CENTER INSTAGRAM */
 
 .center-icon {
-  transform: scale(1.2);
+  transform: scale(1.25);
 }
 
-/* BRAND HOVERS */
-
-.icon-btn:nth-child(1):hover { background: #1877f2; } /* Facebook */
-.icon-btn:nth-child(2):hover { 
-  background: radial-gradient(circle at 30% 30%, #feda75, #d62976, #962fbf);
-}
-.icon-btn:nth-child(3):hover { background: #5865f2; } /* Discord */
-
-.icon-btn:hover svg {
-  transform: scale(1.1);
-}
-
-/* BUTTON STACK */
+/* ===== BUTTON STACK ===== */
 
 .button-stack {
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.big-btn {
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-  letter-spacing: 2px;
-  font-size: 13px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid #222;
-  backdrop-filter: blur(10px);
-  transition: 0.25s;
+.big-img-btn {
+  display: block;
+  width: 100%;
+  position: relative;
+  transition: 0.3s;
 }
 
-/* HOVER EFFECT */
-
-.big-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+.big-img-btn img {
+  width: 100%;
+  border-radius: 16px;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
 }
 
-/* PLATFORM COLORS */
+/* ===== GLOW ===== */
 
-.big-btn:nth-child(1):hover { background: linear-gradient(45deg, #00f2ea, #ff0050); }
-.big-btn:nth-child(2):hover { background: #111; }
-.big-btn:nth-child(3):hover { background: #ff0000; }
-.big-btn:nth-child(4):hover { background: #ff9900; color: black; }
-.big-btn:nth-child(5):hover { background: #00c244; }
+.icon-img-btn:hover img,
+.big-img-btn:hover img {
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.6))
+          drop-shadow(0 0 40px rgba(255,180,0,0.4));
+}
+
+/* ===== SHIMMER ===== */
+
+.icon-img-btn::after,
+.big-img-btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: rotate(25deg);
+  opacity: 0;
+}
+
+.icon-img-btn:hover::after,
+.big-img-btn:hover::after {
+  animation: shimmer 1s ease;
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% { left: -75%; }
+  100% { left: 130%; }
+}
+
+/* ===== RIPPLE ===== */
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.4);
+  animation: rippleAnim 0.6s linear;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
 
 /* ===== MOBILE ===== */
 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 40px;
+  .icon-img-btn {
+    width: 70px;
+    height: 70px;
   }
 }
