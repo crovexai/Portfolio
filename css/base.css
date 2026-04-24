@@ -1,0 +1,36 @@
+:root {
+  --gold-1: #FFD700;
+  --gold-2: #FFF3B0;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* NAV */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  padding: 22px 0;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 4px;
+
+  background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav a.active {
+  text-shadow:
+    0 0 8px rgba(255, 215, 0, 0.9),
+    0 0 18px rgba(255, 200, 0, 0.6);
+}
