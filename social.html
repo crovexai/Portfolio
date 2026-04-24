@@ -14,7 +14,11 @@
 <div class="nav">
 
   <!-- HAMBURGER -->
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
   <!-- DESKTOP NAV -->
   <a href="index.html">MAIN PAGE</a>
@@ -59,53 +63,18 @@
 
 </div>
 
-<!-- SCRIPT -->
 <script>
-
-/* MENU */
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('show');
+  document.getElementById('hamburger').classList.toggle('open');
 }
 
 function closeMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('overlay').classList.remove('show');
+  document.getElementById('hamburger').classList.remove('open');
 }
-
-/* BUTTON EFFECTS */
-const buttons = document.querySelectorAll('.button-grid a');
-
-buttons.forEach(btn => {
-  const img = btn.querySelector('img');
-
-  // SPIN
-  btn.addEventListener('mouseenter', () => {
-    img.classList.remove('spin');
-    void img.offsetWidth;
-    img.classList.add('spin');
-  });
-
-  // CLICK ZOOM + DELAY
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const link = this.href;
-
-    const overlay = document.createElement('div');
-    overlay.className = 'fullscreen';
-
-    const clone = img.cloneNode();
-    overlay.appendChild(clone);
-
-    document.body.appendChild(overlay);
-
-    setTimeout(() => {
-      window.open(link, "_blank");
-      document.body.removeChild(overlay);
-    }, 2400);
-  });
-});
-
 </script>
 
 </body>
