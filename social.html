@@ -10,23 +10,39 @@
 </head>
 <body>
 
+<!-- NAV -->
 <div class="nav">
+
+  <!-- HAMBURGER -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <!-- DESKTOP NAV -->
   <a href="index.html">MAIN PAGE</a>
   <a href="fashion.html">FASHION</a>
   <a href="commercial.html">COMMERCIAL</a>
   <a href="lifestyle.html">LIFESTYLE</a>
   <a href="social.html" class="active">SOCIAL</a>
+
 </div>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">MAIN PAGE</a>
+  <a href="fashion.html">FASHION</a>
+  <a href="commercial.html">COMMERCIAL</a>
+  <a href="lifestyle.html">LIFESTYLE</a>
+  <a href="social.html">SOCIAL</a>
+</div>
+
+<div class="menu-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- CONTENT -->
 <div class="social-container">
 
-  <!-- PROFILE -->
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp" class="profile-img">
 
-  <!-- NAMETAG -->
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777050098/nametag_mixp8t.png" class="name-tag">
 
-  <!-- ICON GRID -->
   <div class="button-grid">
 
     <a href="https://www.facebook.com/"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986363/facebook_m1jbkn.png"></a>
@@ -43,20 +59,34 @@
 
 </div>
 
+<!-- SCRIPT -->
 <script>
+
+/* MENU */
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+/* BUTTON EFFECTS */
 const buttons = document.querySelectorAll('.button-grid a');
 
 buttons.forEach(btn => {
   const img = btn.querySelector('img');
 
-  // SPIN ON EVERY HOVER (reliable retrigger)
+  // SPIN
   btn.addEventListener('mouseenter', () => {
     img.classList.remove('spin');
-    void img.offsetWidth; // force reflow
+    void img.offsetWidth;
     img.classList.add('spin');
   });
 
-  // FULLSCREEN ZOOM + DELAYED OPEN
+  // CLICK ZOOM + DELAY
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     const link = this.href;
@@ -72,28 +102,10 @@ buttons.forEach(btn => {
     setTimeout(() => {
       window.open(link, "_blank");
       document.body.removeChild(overlay);
-    }, 2400); // delay (you asked for slower)
+    }, 2400);
   });
 });
 
-
-/* OPTIONAL: NAMETAG TILT EFFECT */
-const nameTag = document.querySelector('.name-tag');
-
-nameTag.addEventListener('mousemove', (e) => {
-  const rect = nameTag.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  const rotateX = ((y / rect.height) - 0.5) * -10;
-  const rotateY = ((x / rect.width) - 0.5) * 10;
-
-  nameTag.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-});
-
-nameTag.addEventListener('mouseleave', () => {
-  nameTag.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-});
 </script>
 
 </body>
