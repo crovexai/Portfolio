@@ -17,12 +17,13 @@ body {
   align-items: center;
 
   padding: 18px 10px;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.9);
   backdrop-filter: blur(10px);
 
   box-shadow: 0 2px 20px rgba(255, 215, 0, 0.15);
 }
 
+/* NAV LINKS */
 .nav a {
   color: gold;
   text-decoration: none;
@@ -31,10 +32,15 @@ body {
   letter-spacing: 2px;
 }
 
-.nav a:hover { text-shadow: 0 0 10px gold; }
-.nav a.active { text-shadow: 0 0 15px gold; }
+.nav a:hover {
+  text-shadow: 0 0 10px gold;
+}
 
-/* ===== HAMBURGER ===== */
+.nav a.active {
+  text-shadow: 0 0 15px gold;
+}
+
+/* ===== HAMBURGER (FIXED GOLD) ===== */
 .hamburger {
   display: none;
   position: absolute;
@@ -47,19 +53,24 @@ body {
   z-index: 1300;
 }
 
+/* STRONG GOLD LINES */
 .hamburger span {
   display: block;
   height: 3px;
   width: 100%;
-  background: gold;
+  background: linear-gradient(90deg, #FFD700, #FFF3B0);
   margin: 4px 0;
   transition: 0.4s;
+  box-shadow: 0 0 6px rgba(255,215,0,0.7);
 }
 
+/* MORPH TO X */
 .hamburger.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
-.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
 .hamburger.open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -73,7 +84,6 @@ body {
   height: 100vh;
 
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
 
@@ -83,13 +93,14 @@ body {
   z-index: 1200;
 }
 
-/* ===== REAL COLLAGE GRID ===== */
+/* ===== CLEAN CINEMATIC COLLAGE ===== */
 .mobile-menu::before {
   content: "";
   position: absolute;
   inset: 0;
 
-  background-image:
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
     url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-4_wqqgw7.webp"),
     url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-2_kfaujz.webp"),
     url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-3_wd6oaa.webp"),
@@ -97,32 +108,24 @@ body {
     url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-5_mud39s.webp"),
     url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp");
 
-  background-size: 50% 33.33%;
-  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
 
-  /* GRID POSITIONS */
-  background-position:
-    0% 0%,
-    50% 0%,
-    0% 33.33%,
-    50% 33.33%,
-    0% 66.66%,
-    50% 66.66%;
+  filter: blur(10px) brightness(0.5);
 
-  filter:
-    brightness(0.35)
-    contrast(1.2)
-    blur(4px);
+  transform: scale(1.1); /* removes edge cutoff */
 
   z-index: -2;
 }
 
-/* DARK OVERLAY */
+/* EXTRA SMOOTH FADE */
 .mobile-menu::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+
+  background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
+
   z-index: -1;
 }
 
@@ -138,7 +141,8 @@ body {
   padding: 18px 25px;
   font-size: 16px;
 
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
+  transition: 0.3s;
 }
 
 .mobile-menu a:hover {
