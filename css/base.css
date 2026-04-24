@@ -34,3 +34,67 @@ body {
     0 0 8px rgba(255, 215, 0, 0.9),
     0 0 18px rgba(255, 200, 0, 0.6);
 }
+
+/* PAGE TITLE */
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 20px;
+  letter-spacing: 4px;
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* IMAGE WRAP */
+
+.img-wrap {
+  position: relative;
+  cursor: pointer;
+}
+
+.img-wrap img {
+  width: 100%;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.img-wrap:hover .overlay {
+  opacity: 1;
+}
