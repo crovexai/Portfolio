@@ -12,24 +12,13 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ===== NAV (GOLD LUXURY) ===== */
+/* ===== NAV ===== */
 
 .nav {
   display: flex;
   justify-content: center;
   gap: 35px;
   padding: 22px 0;
-  position: relative;
-}
-
-.nav::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold-1), transparent);
-  opacity: 0.4;
 }
 
 .nav a {
@@ -40,24 +29,6 @@ body {
   background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-1));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  position: relative;
-  transition: 0.3s;
-}
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 0%;
-  height: 1px;
-  background: var(--gold-1);
-  transition: 0.3s;
-}
-
-.nav a:hover::after {
-  width: 100%;
 }
 
 .nav a.active {
@@ -66,93 +37,17 @@ body {
     0 0 18px rgba(255, 200, 0, 0.6);
 }
 
-/* ===== HERO ===== */
-
-.hero {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.hero h1 {
-  font-size: 48px;
-}
-
-.hero p {
-  color: #aaa;
-}
-
-/* ===== GRID (GALLERY) ===== */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  padding: 20px;
-}
-
-.img-wrap.hero {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.img-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background: rgba(0,0,0,0.6);
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.img-wrap:hover .overlay {
-  opacity: 1;
-}
-
-/* ===== LIGHTBOX ===== */
-
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox.active {
-  display: flex;
-}
-
-.lightbox img {
-  max-width: 90%;
-}
-
-/* ===== SOCIAL PAGE ===== */
+/* ===== SOCIAL ===== */
 
 .social-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
-  gap: 25px;
+  margin-top: 50px;
+  gap: 30px;
 }
 
-/* PROFILE GROUP */
+/* PROFILE */
 
 .profile-group {
   display: flex;
@@ -161,8 +56,6 @@ body {
   gap: 15px;
 }
 
-/* PROFILE IMAGE */
-
 .profile-img {
   width: 260px;
   height: 260px;
@@ -170,8 +63,6 @@ body {
   object-fit: cover;
   border: 3px solid rgba(255, 215, 0, 0.4);
 }
-
-/* NAME */
 
 .name {
   font-size: 32px;
@@ -182,11 +73,11 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* ICON ROW */
+/* TOP ICONS */
 
 .icon-row {
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
 .icon-img-btn {
@@ -200,22 +91,32 @@ body {
   object-fit: contain;
 }
 
-/* ===== BUTTON GRID (PHONE STYLE) ===== */
+.center-icon {
+  transform: scale(1.1);
+}
+
+/* ===== APP GRID (FIXED) ===== */
 
 .button-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  width: 90%;
-  max-width: 520px;
+  gap: 24px;
+  width: 100%;
+  max-width: 500px;
+  justify-items: center;
 }
 
-/* BUTTONS */
+.big-img-btn {
+  width: 85px;
+  height: 85px;
+}
 
 .big-img-btn img {
   width: 100%;
-  border-radius: 16px;
-  transition: 0.2s ease;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 18px;
+  transition: transform 0.2s ease;
 }
 
 .big-img-btn:hover img {
@@ -225,10 +126,6 @@ body {
 /* ===== MOBILE ===== */
 
 @media (max-width: 600px) {
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
 
   .profile-img {
     width: 180px;
@@ -240,6 +137,12 @@ body {
   }
 
   .button-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .big-img-btn {
+    width: 70px;
+    height: 70px;
   }
 }
