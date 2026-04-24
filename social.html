@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="index.html">MAIN PAGE</a>
   <a href="fashion.html">FASHION</a>
@@ -21,60 +20,59 @@
 
 <div class="social-container">
 
-  <!-- PROFILE -->
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp" class="profile-img">
   <h1 class="name">Xander Herdia-Leon</h1>
 
-  <!-- GRID -->
   <div class="button-grid">
 
-    <!-- ROW 1 -->
-    <a href="https://www.facebook.com/" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986363/facebook_m1jbkn.png">
-    </a>
+    <a href="https://www.facebook.com/" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986363/facebook_m1jbkn.png"></a>
+    <a href="https://instagram.com/vzxayy" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/instagram_lltesz.png"></a>
+    <a href="https://discord.com/" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986667/discord_o2ujkt.png"></a>
+    <a href="https://www.tiktok.com/@xayyleon" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986668/tiktok_bx9k4v.png"></a>
 
-    <a href="https://instagram.com/vzxayy" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/instagram_lltesz.png">
-    </a>
-
-    <a href="https://discord.com/" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986667/discord_o2ujkt.png">
-    </a>
-
-    <a href="https://www.tiktok.com/@xayyleon" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986668/tiktok_bx9k4v.png">
-    </a>
-
-    <!-- ROW 2 -->
-    <a href="https://x.com/" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986366/twitter_zv0bkp.png">
-    </a>
-
-    <a href="https://www.youtube.com/" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/youtube_leqgt7.png">
-    </a>
-
-    <a href="https://www.amazon.com/" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986365/amazon_bolp4d.png">
-    </a>
-
-    <a href="https://cash.app/" target="_blank">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986364/cashapp_fkc1aq.png">
-    </a>
+    <a href="https://x.com/" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986366/twitter_zv0bkp.png"></a>
+    <a href="https://www.youtube.com/" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/youtube_leqgt7.png"></a>
+    <a href="https://www.amazon.com/" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986365/amazon_bolp4d.png"></a>
+    <a href="https://cash.app/" target="_blank"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986364/cashapp_fkc1aq.png"></a>
 
   </div>
 
 </div>
 
-<!-- CLICK ANIMATION -->
 <script>
-document.querySelectorAll('.button-grid a').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.style.transform = "scale(0.9)";
-    setTimeout(() => {
-      btn.style.transform = "scale(1)";
-    }, 120);
+const buttons = document.querySelectorAll('.button-grid a');
+
+buttons.forEach(btn => {
+  const img = btn.querySelector('img');
+
+  let hasSpun = false;
+
+  // FIRST HOVER = 3D SPIN
+  btn.addEventListener('mouseenter', () => {
+    if (!hasSpun) {
+      img.classList.add('spin-once');
+      hasSpun = true;
+
+      setTimeout(() => {
+        img.classList.remove('spin-once');
+      }, 800);
+    }
   });
+
+  // CLICK = ZOOM THEN OPEN LINK
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const link = this.href;
+
+    img.classList.add('zoom-click');
+
+    setTimeout(() => {
+      window.open(link, "_blank");
+      img.classList.remove('zoom-click');
+    }, 350);
+  });
+
 });
 </script>
 
