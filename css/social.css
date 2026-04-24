@@ -19,17 +19,74 @@ img {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid gold;
+
+  box-shadow:
+    0 0 25px rgba(255, 215, 0, 0.4),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
-/* NAME */
-.name {
-  margin-top: 20px;
-  font-size: 32px;
-  letter-spacing: 3px;
+/* ===== 3D NAME ===== */
 
-  background: linear-gradient(90deg, #FFD700, #FFF3B0, #FFD700);
+.name {
+  margin-top: 25px;
+  font-size: 36px;
+  letter-spacing: 4px;
+  font-weight: bold;
+  position: relative;
+
+  /* GOLD METAL GRADIENT */
+  background: linear-gradient(
+    120deg,
+    #FFD700 0%,
+    #FFF3B0 25%,
+    #FFD700 50%,
+    #CFAF3A 75%,
+    #FFD700 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  /* DEPTH (3D STACK) */
+  text-shadow:
+    0 1px 0 #b89600,
+    0 2px 0 #a88700,
+    0 3px 0 #917400,
+    0 4px 0 #7a6200,
+    0 5px 10px rgba(0,0,0,0.8),
+    0 0 25px rgba(255, 215, 0, 0.4);
+
+  transition: transform 0.3s ease;
+}
+
+/* HOVER = SLIGHT FLOAT */
+.name:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* SHIMMER LIGHT PASS */
+.name::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.5) 50%,
+    transparent 100%
+  );
+
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.name:hover::after {
+  left: 100%;
+  opacity: 1;
 }
 
 /* GRID */
@@ -53,44 +110,25 @@ img {
     0 0 15px rgba(255, 215, 0, 0.2);
 }
 
-/* SPIN ANIMATION */
+/* SPIN */
 @keyframes spin3d {
-  0%   { transform: rotateY(0deg) rotateX(0deg); }
-  50%  { transform: rotateY(180deg) rotateX(10deg); }
-  100% { transform: rotateY(360deg) rotateX(0deg); }
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
 }
 
 .spin {
   animation: spin3d 0.8s ease;
 }
 
-/* FULLSCREEN OVERLAY */
+/* FULLSCREEN */
 .fullscreen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: black;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 9999;
-  animation: zoomIn 0.4s ease forwards;
-}
-
-/* ZOOM ANIMATION */
-@keyframes zoomIn {
-  0% {
-    transform: scale(0.2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 /* MOBILE */
