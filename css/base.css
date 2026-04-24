@@ -6,7 +6,7 @@ body {
   color: white;
 }
 
-/* NAV */
+/* ===== NAV ===== */
 .nav {
   position: sticky;
   top: 0;
@@ -25,12 +25,13 @@ body {
 /* NAV LINKS */
 .nav a {
   color: gold;
-  margin: 0 18px;
   text-decoration: none;
+  margin: 0 18px;
+  font-size: 14px;
   letter-spacing: 2px;
 }
 
-/* ===== HAMBURGER (REAL GOLD FIX) ===== */
+/* ===== HAMBURGER (FIXED GOLD) ===== */
 .hamburger {
   display: none;
   position: absolute;
@@ -51,13 +52,13 @@ body {
   background: linear-gradient(90deg, #FFD700, #FFF3B0, #FFD700);
 
   box-shadow:
-    0 0 8px #FFD700,
-    0 0 18px rgba(255,215,0,0.7);
+    0 0 10px #FFD700,
+    0 0 20px rgba(255,215,0,0.8);
 
   transition: 0.4s;
 }
 
-/* MORPH */
+/* MORPH TO X */
 .hamburger.open span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -68,7 +69,7 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ===== MOBILE DRAWER ===== */
+/* ===== MOBILE MENU ===== */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -86,41 +87,42 @@ body {
   z-index: 1500;
 }
 
-/* 🔥 COLLAGE (FIXED PROPERLY) */
+/* 🔥 YOUR BACKGROUND IMAGE (CLEAN VERSION) */
 .mobile-menu::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-4_wqqgw7.webp") center/cover,
-    url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-2_kfaujz.webp") center/cover;
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+    url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1777054651/menu_mwv9cc.png");
 
-  filter: blur(12px) brightness(0.4);
-  transform: scale(1.2);
+  background-size: cover;
+  background-position: center;
 
-  z-index: -2;
-}
+  filter: brightness(0.6) contrast(1.1);
 
-/* DARK LAYER */
-.mobile-menu::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
   z-index: -1;
 }
 
+/* OPEN */
 .mobile-menu.open {
   left: 0;
 }
 
-/* LINKS */
+/* MENU LINKS */
 .mobile-menu a {
   color: gold;
-  padding: 18px 25px;
   text-decoration: none;
+  padding: 18px 25px;
   font-size: 16px;
+
+  transition: 0.3s;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255,215,0,0.15);
+  padding-left: 30px;
 }
 
 /* OVERLAY */
@@ -128,9 +130,12 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
+
   opacity: 0;
   pointer-events: none;
+
   transition: 0.3s;
+  z-index: 1400;
 }
 
 .menu-overlay.show {
@@ -138,7 +143,7 @@ body {
   pointer-events: all;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
   .nav a { display: none; }
   .hamburger { display: block; }
