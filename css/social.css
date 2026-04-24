@@ -1,0 +1,58 @@
+.social-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  gap: 30px;
+}
+
+/* PROFILE */
+
+.profile-img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 32px;
+  letter-spacing: 3px;
+
+  background: linear-gradient(90deg, #FFD700, #FFF3B0, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ICON ROW */
+
+.icon-row {
+  display: flex;
+  gap: 30px;
+}
+
+.icon-img-btn {
+  width: 65px;
+  height: 65px;
+}
+
+.icon-img-btn img {
+  width: 100%;
+}
+
+/* 8 ICON GRID */
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 420px;
+}
+
+.big-img-btn {
+  width: 80px;
+  height: 80px;
+}
+
+.big-img-btn img {
+  width: 100%;
+}
