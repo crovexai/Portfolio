@@ -45,7 +45,7 @@ const buttons = document.querySelectorAll('.button-grid a');
 buttons.forEach(btn => {
   const img = btn.querySelector('img');
 
-  // SPIN EVERY HOVER (guaranteed retrigger)
+  // SPIN on hover (retrigger every time)
   btn.addEventListener('mouseenter', () => {
     img.classList.remove('spin');
     setTimeout(() => {
@@ -53,7 +53,7 @@ buttons.forEach(btn => {
     }, 10);
   });
 
-  // FULLSCREEN ZOOM + LINK OPEN
+  // CLICK → fullscreen zoom → DELAY → open link
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     const link = this.href;
@@ -66,10 +66,11 @@ buttons.forEach(btn => {
 
     document.body.appendChild(overlay);
 
+    // ORIGINAL 400ms + EXTRA 2000ms = ~2400ms total delay
     setTimeout(() => {
       window.open(link, "_blank");
       document.body.removeChild(overlay);
-    }, 400);
+    }, 2400);
   });
 });
 </script>
