@@ -4,33 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lifestyle - Xander Herdia-Leon</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="lifestyle.css">
 </head>
 <body>
 
-  <div class="container">
-    <nav class="nav">
-      <a href="index.html">MAIN PAGE</a>
-      <a href="fashion.html">FASHION</a>
-      <a href="commercial.html">COMMERCIAL</a>
-      <a href="lifestyle.html">LIFESTYLE</a>
-      <a href="social.html">SOCIAL</a>
-    </nav>
+<div class="nav">
+  <a href="index.html">MAIN PAGE</a>
+  <a href="fashion.html">FASHION</a>
+  <a href="commercial.html">COMMERCIAL</a>
+  <a href="lifestyle.html" class="active">LIFESTYLE</a>
+  <a href="social.html">SOCIAL</a>
+</div>
 
-    <h1 class="title">LIFESTYLE</h1>
-    <div id="gallery" class="grid"></div>
-  </div>
+<h1 class="title">LIFESTYLE</h1>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img">
-  </div>
+<div id="gallery" class="grid"></div>
 
-  <script src="data.js"></script>
-  <script>
-    renderGallery(lifestyleImages);
-  </script>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<script src="data.js"></script>
+<script>
+  renderGallery(lifestyleImages);
+</script>
 
 </body>
 </html>
