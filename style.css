@@ -1,11 +1,26 @@
 /* ===== BASE ===== */
 
+:root {
+  --bg-x: 50%;
+  --bg-y: 50%;
+  --scroll-light: 0px;
+}
+
+html {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
-  background: radial-gradient(circle at top, #111, #000);
+  min-height: 100vh;
   color: white;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   perspective: 1000px;
+  background:
+    radial-gradient(circle at var(--bg-x) var(--bg-y), rgba(255, 190, 40, 0.13), transparent 32%),
+    radial-gradient(circle at 50% calc(0% + var(--scroll-light)), rgba(255, 220, 120, 0.08), transparent 35%),
+    radial-gradient(circle at top, #16120a, #000 70%);
+  overflow-x: hidden;
 }
 
 /* ===== CINEMATIC BACKGROUND ===== */
@@ -13,67 +28,233 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: -50%;
-  left: -50%;
+  inset: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,200,0,0.08), transparent 40%),
-              radial-gradient(circle at 70% 70%, rgba(255,150,0,0.06), transparent 40%);
-  animation: bgMove 20s linear infinite;
-  z-index: -2;
-}
-
-@keyframes bgMove {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(50px,50px); }
-  100% { transform: translate(0,0); }
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 200, 0, 0.08), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 130, 0, 0.06), transparent 42%);
+  animation: bgMove 22s linear infinite;
+  z-index: -3;
 }
 
 body::after {
   content: "";
   position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,180,0,0.15), transparent 70%);
-  top: 20%;
-  left: 60%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+  top: 15%;
+  left: 55%;
   filter: blur(120px);
-  z-index: -1;
+  z-index: -2;
+}
+
+@keyframes bgMove {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(45px, 45px) rotate(8deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
 html::before {
   content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.03;
+  opacity: 0.035;
   pointer-events: none;
-  z-index: 1;
+  z-index: 5;
 }
 
-/* ===== SOCIAL ===== */
+/* ===== CURSOR LIGHT ===== */
+
+.cursor-light {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 205, 80, 0.16), transparent 65%);
+  filter: blur(30px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* ===== NAV ===== */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px 0;
+}
+
+.nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.hero h1 {
+  font-size: 60px;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ===== GRID ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 0 20px;
+}
+
+.hero.img-wrap {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ===== IMAGE GALLERY ===== */
+
+.img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.img-wrap:hover .img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  text-align: center;
+  opacity: 0;
+  transition: 0.3s;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.img-wrap:hover .overlay {
+  opacity: 1;
+}
+
+/* ===== LIGHTBOX ===== */
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+/* ===== SOCIAL PAGE ===== */
 
 .social-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 54px;
+  padding-bottom: 60px;
+  animation: socialFadeIn 0.9s ease;
+  position: relative;
+  z-index: 2;
 }
+
+@keyframes socialFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== PROFILE ===== */
 
 .profile-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #222;
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  border: 2px solid rgba(255, 205, 80, 0.3);
+  box-shadow:
+    0 0 25px rgba(255, 220, 120, 0.12),
+    0 12px 35px rgba(0,0,0,0.6);
 }
 
 .name {
   margin-top: 15px;
   font-size: 24px;
   letter-spacing: 2px;
+  text-shadow: 0 0 18px rgba(255, 220, 120, 0.15);
 }
 
 /* ===== ICON ROW ===== */
@@ -82,6 +263,7 @@ html::before {
   display: flex;
   gap: 25px;
   margin: 30px 0;
+  align-items: center;
 }
 
 .icon-img-btn {
@@ -89,18 +271,25 @@ html::before {
   height: 85px;
   display: block;
   position: relative;
-  transition: 0.3s;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .icon-img-btn img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+  filter:
+    drop-shadow(0 7px 12px rgba(0,0,0,0.65))
+    drop-shadow(0 0 0 rgba(255,215,0,0));
+  transition: filter 0.3s ease;
 }
 
 .center-icon {
-  transform: scale(1.25);
+  scale: 1.22;
 }
 
 /* ===== BUTTON STACK ===== */
@@ -117,47 +306,69 @@ html::before {
   display: block;
   width: 100%;
   position: relative;
-  transition: 0.3s;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .big-img-btn img {
   width: 100%;
+  display: block;
   border-radius: 16px;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+  filter:
+    drop-shadow(0 10px 22px rgba(0,0,0,0.65))
+    drop-shadow(0 0 0 rgba(255,215,0,0));
+  transition: filter 0.3s ease;
 }
 
 /* ===== GLOW ===== */
 
 .icon-img-btn:hover img,
 .big-img-btn:hover img {
-  filter: drop-shadow(0 0 20px rgba(255,215,0,0.6))
-          drop-shadow(0 0 40px rgba(255,180,0,0.4));
+  filter:
+    drop-shadow(0 0 18px rgba(255, 215, 0, 0.75))
+    drop-shadow(0 0 36px rgba(255, 165, 0, 0.45))
+    drop-shadow(0 12px 26px rgba(0,0,0,0.75));
 }
 
-/* ===== SHIMMER ===== */
+/* ===== GOLD SHIMMER ===== */
 
 .icon-img-btn::after,
 .big-img-btn::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -75%;
+  top: -70%;
+  left: -90%;
   width: 50%;
-  height: 200%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  height: 240%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.55),
+    rgba(255,230,150,0.35),
+    transparent
+  );
   transform: rotate(25deg);
   opacity: 0;
+  pointer-events: none;
 }
 
 .icon-img-btn:hover::after,
 .big-img-btn:hover::after {
-  animation: shimmer 1s ease;
+  animation: shimmer 0.9s ease;
   opacity: 1;
 }
 
 @keyframes shimmer {
-  0% { left: -75%; }
-  100% { left: 130%; }
+  0% {
+    left: -90%;
+  }
+
+  100% {
+    left: 135%;
+  }
 }
 
 /* ===== RIPPLE ===== */
@@ -166,8 +377,9 @@ html::before {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.38);
   animation: rippleAnim 0.6s linear;
+  pointer-events: none;
 }
 
 @keyframes rippleAnim {
@@ -180,8 +392,31 @@ html::before {
 /* ===== MOBILE ===== */
 
 @media (max-width: 600px) {
+  .social-container {
+    margin-top: 38px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .profile-img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .name {
+    font-size: 21px;
+  }
+
+  .icon-row {
+    gap: 18px;
+  }
+
   .icon-img-btn {
     width: 70px;
     height: 70px;
+  }
+
+  .button-stack {
+    max-width: 320px;
   }
 }
