@@ -24,7 +24,6 @@ body {
   align-items: center;
 
   padding: 18px 10px;
-
   background: rgba(0,0,0,0.9);
 }
 
@@ -32,7 +31,7 @@ body {
 .nav a {
   color: gold;
   text-decoration: none;
-  margin: 0 16px;
+  margin: 0 14px;
   font-size: 14px;
   letter-spacing: 2px;
 }
@@ -46,8 +45,7 @@ body {
   transform: translateY(-50%);
   width: 28px;
   height: 22px;
-  cursor: pointer;
-  z-index: 2200;
+  z-index: 2500;
 }
 
 .hamburger span {
@@ -56,55 +54,41 @@ body {
   width: 100%;
   margin: 5px 0;
 
-  background: linear-gradient(90deg, #FFD700, #FFF3B0, #FFD700);
+  background: linear-gradient(90deg, #FFD700, #FFF3B0);
 
   box-shadow:
     0 0 10px #FFD700,
-    0 0 20px rgba(255,215,0,0.8);
-
-  transition: 0.4s;
+    0 0 20px rgba(255,215,0,0.7);
 }
 
-/* MORPH TO X */
-.hamburger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* ===== SIDE MENU (75%) ===== */
+/* ===== SIDE MENU FIXED WIDTH ===== */
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: -75%;
-  width: 75%;
+  left: -75vw;       /* 🔥 FORCE viewport width */
+  width: 75vw;       /* 🔥 FIX FULLSCREEN BUG */
   height: 100vh;
 
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
-
-  overflow: hidden;
+  justify-content: center;
+  padding-left: 30px;
 
   transition: 0.35s ease;
-  z-index: 2100;
+  z-index: 2400;
 }
 
-/* BACKGROUND IMAGE */
+/* BACKGROUND */
 .mobile-menu::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)),
     url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1777054651/menu_mwv9cc.png");
 
-  background-size: contain;   /* shows full image */
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -119,29 +103,22 @@ body {
 /* LINKS */
 .mobile-menu a {
   color: gold;
+  font-size: 20px;
+  margin: 12px 0;
   text-decoration: none;
-  padding: 18px 25px;
-  font-size: 18px;
-
-  text-shadow: 0 0 8px rgba(255,215,0,0.6);
 }
 
-.mobile-menu a:hover {
-  background: rgba(255,215,0,0.15);
-  padding-left: 30px;
-}
-
-/* ===== OVERLAY ===== */
+/* OVERLAY */
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.5);
 
   opacity: 0;
   pointer-events: none;
 
   transition: 0.3s;
-  z-index: 2000;
+  z-index: 2300;
 }
 
 .menu-overlay.show {
@@ -149,7 +126,7 @@ body {
   pointer-events: all;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media (max-width: 600px) {
   .nav a {
     display: none;
