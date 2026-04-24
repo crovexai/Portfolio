@@ -8,92 +8,149 @@
 </head>
 <body>
 
+<div class="cursor-light"></div>
+
 <div class="social-container">
 
-  <!-- PROFILE -->
-  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp" class="profile-img">
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp" class="profile-img" alt="Xander Herdia-Leon">
 
   <h1 class="name">Xander Herdia-Leon</h1>
 
-  <!-- ICON ROW -->
   <div class="icon-row">
 
-    <a href="https://www.facebook.com/" class="icon-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986363/facebook_m1jbkn.png">
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="icon-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986363/facebook_m1jbkn.png" alt="Facebook">
     </a>
 
-    <a href="https://instagram.com/vzxayy" class="icon-img-btn center-icon">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/instagram_lltesz.png">
+    <a href="https://instagram.com/vzxayy" target="_blank" rel="noopener noreferrer" class="icon-img-btn center-icon magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/instagram_lltesz.png" alt="Instagram">
     </a>
 
-    <a href="https://discord.com/" class="icon-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986667/discord_o2ujkt.png">
+    <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="icon-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986667/discord_o2ujkt.png" alt="Discord">
     </a>
 
   </div>
 
-  <!-- BUTTON STACK -->
   <div class="button-stack">
 
-    <a href="https://www.tiktok.com/@xayyleon" class="big-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986668/tiktok_bx9k4v.png">
+    <a href="https://www.tiktok.com/@xayyleon" target="_blank" rel="noopener noreferrer" class="big-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986668/tiktok_bx9k4v.png" alt="TikTok">
     </a>
 
-    <a href="https://x.com/" class="big-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986366/twitter_zv0bkp.png">
+    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="big-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986366/twitter_zv0bkp.png" alt="X">
     </a>
 
-    <a href="https://www.youtube.com/" class="big-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/youtube_leqgt7.png">
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="big-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986362/youtube_leqgt7.png" alt="YouTube">
     </a>
 
-    <a href="https://www.amazon.com/" class="big-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986365/amazon_bolp4d.png">
+    <a href="https://www.amazon.com/" target="_blank" rel="noopener noreferrer" class="big-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986365/amazon_bolp4d.png" alt="Amazon Wishlist">
     </a>
 
-    <a href="https://cash.app/" class="big-img-btn">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986364/cashapp_fkc1aq.png">
+    <a href="https://cash.app/" target="_blank" rel="noopener noreferrer" class="big-img-btn magnetic">
+      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986364/cashapp_fkc1aq.png" alt="Cash App">
     </a>
 
   </div>
 
 </div>
 
-<!-- INTERACTIONS -->
 <script>
-document.querySelectorAll('.icon-img-btn, .big-img-btn').forEach(el => {
+const cursorLight = document.querySelector(".cursor-light");
+const magneticItems = document.querySelectorAll(".magnetic");
 
-  // PARALLAX
-  el.addEventListener('mousemove', (e) => {
+let audioReady = false;
+let audioCtx;
+
+function initAudio() {
+  if (!audioReady) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioReady = true;
+  }
+}
+
+function playHoverSound() {
+  if (!audioReady) return;
+
+  const oscillator = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(520, audioCtx.currentTime);
+
+  gain.gain.setValueAtTime(0.018, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+
+  oscillator.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + 0.08);
+}
+
+document.addEventListener("click", initAudio, { once: true });
+
+document.addEventListener("mousemove", (e) => {
+  cursorLight.style.left = `${e.clientX}px`;
+  cursorLight.style.top = `${e.clientY}px`;
+
+  const x = (e.clientX / window.innerWidth - 0.5) * 30;
+  const y = (e.clientY / window.innerHeight - 0.5) * 30;
+
+  document.body.style.setProperty("--bg-x", `${50 + x}%`);
+  document.body.style.setProperty("--bg-y", `${50 + y}%`);
+});
+
+window.addEventListener("scroll", () => {
+  const scrollAmount = window.scrollY;
+  document.body.style.setProperty("--scroll-light", `${Math.min(scrollAmount / 6, 120)}px`);
+});
+
+magneticItems.forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    playHoverSound();
+  });
+
+  el.addEventListener("mousemove", (e) => {
     const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
 
-    const rotateX = ((y / rect.height) - 0.5) * -10;
-    const rotateY = ((x / rect.width) - 0.5) * 10;
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
 
-    el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    const moveX = x * 0.18;
+    const moveY = y * 0.18;
+
+    const rotateX = (y / rect.height) * -6;
+    const rotateY = (x / rect.width) * 6;
+
+    el.style.transform = `
+      translate(${moveX}px, ${moveY}px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.06)
+    `;
   });
 
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = "translate(0, 0) rotateX(0) rotateY(0) scale(1)";
   });
 
-  // RIPPLE
-  el.addEventListener('click', function(e) {
+  el.addEventListener("click", function(e) {
     const circle = document.createElement("span");
     const d = Math.max(this.clientWidth, this.clientHeight);
 
     circle.style.width = circle.style.height = d + "px";
-    circle.style.left = e.offsetX - d/2 + "px";
-    circle.style.top = e.offsetY - d/2 + "px";
+    circle.style.left = e.offsetX - d / 2 + "px";
+    circle.style.top = e.offsetY - d / 2 + "px";
 
     circle.classList.add("ripple");
     this.appendChild(circle);
 
     setTimeout(() => circle.remove(), 600);
   });
-
 });
 </script>
 
