@@ -2,20 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-  gap: 30px;
+  margin-top: 40px;
+  gap: 25px;
 }
 
 /* PROFILE */
 
 .profile-img {
-  width: 260px;
-  height: 260px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid gold;
 }
 
 .name {
-  font-size: 32px;
+  font-size: 30px;
   letter-spacing: 3px;
 
   background: linear-gradient(90deg, #FFD700, #FFF3B0, #FFD700);
@@ -27,32 +29,30 @@
 
 .icon-row {
   display: flex;
-  gap: 30px;
+  gap: 25px;
 }
 
-.icon-img-btn {
-  width: 65px;
-  height: 65px;
+.icon-row img {
+  width: 60px;
 }
 
-.icon-img-btn img {
-  width: 100%;
-}
-
-/* 8 ICON GRID */
+/* GRID */
 
 .button-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  gap: 20px;
   max-width: 420px;
 }
 
-.big-img-btn {
+.button-grid img {
   width: 80px;
-  height: 80px;
 }
 
-.big-img-btn img {
-  width: 100%;
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .button-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
