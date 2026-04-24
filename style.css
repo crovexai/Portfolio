@@ -1,5 +1,10 @@
 /* ===== BASE ===== */
 
+:root {
+  --gold-1: #FFD700;
+  --gold-2: #FFF3B0;
+}
+
 body {
   margin: 0;
   background: #000;
@@ -7,54 +12,186 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ===== SOCIAL CONTAINER ===== */
+/* ===== NAV (GOLD LUXURY) ===== */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  padding: 22px 0;
+  position: relative;
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-1), transparent);
+  opacity: 0.4;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 4px;
+
+  background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: var(--gold-1);
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a.active {
+  text-shadow:
+    0 0 8px rgba(255, 215, 0, 0.9),
+    0 0 18px rgba(255, 200, 0, 0.6);
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  color: #aaa;
+}
+
+/* ===== GRID (GALLERY) ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 20px;
+}
+
+.img-wrap.hero {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.img-wrap:hover .overlay {
+  opacity: 1;
+}
+
+/* ===== LIGHTBOX ===== */
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+}
+
+/* ===== SOCIAL PAGE ===== */
 
 .social-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 40px;
+  gap: 25px;
 }
 
-/* ===== PROFILE ===== */
+/* PROFILE GROUP */
+
+.profile-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* PROFILE IMAGE */
 
 .profile-img {
-  width: 300px;   /* 3x bigger */
-  height: 300px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(255, 215, 0, 0.4);
-  box-shadow: 0 0 40px rgba(255, 200, 0, 0.2);
 }
 
-/* ===== NAME ===== */
+/* NAME */
 
 .name {
-  margin-top: 20px;
-  font-size: 36px;
+  font-size: 32px;
   letter-spacing: 3px;
-  font-weight: 600;
 
-  background: linear-gradient(90deg, #FFD700, #FFF3B0, #FFD700);
+  background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-1));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  text-shadow:
-    0 0 10px rgba(255, 215, 0, 0.4),
-    0 0 20px rgba(255, 180, 0, 0.2);
 }
 
-/* ===== ICON ROW ===== */
+/* ICON ROW */
 
 .icon-row {
   display: flex;
-  gap: 30px;
-  margin: 40px 0;
+  gap: 25px;
 }
 
 .icon-img-btn {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
 }
 
 .icon-img-btn img {
@@ -63,29 +200,22 @@ body {
   object-fit: contain;
 }
 
-/* ===== BUTTON GRID ===== */
+/* ===== BUTTON GRID (PHONE STYLE) ===== */
 
 .button-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  gap: 18px;
   width: 90%;
-  max-width: 600px;
+  max-width: 520px;
 }
 
 /* BUTTONS */
 
-.big-img-btn {
-  display: block;
-}
-
 .big-img-btn img {
   width: 100%;
-  border-radius: 18px;
-  box-shadow:
-    0 10px 25px rgba(0,0,0,0.7),
-    0 0 10px rgba(255, 200, 0, 0.2);
-  transition: transform 0.2s ease;
+  border-radius: 16px;
+  transition: 0.2s ease;
 }
 
 .big-img-btn:hover img {
@@ -96,13 +226,17 @@ body {
 
 @media (max-width: 600px) {
 
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
   .profile-img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
   }
 
   .name {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .button-grid {
