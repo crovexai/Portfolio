@@ -20,9 +20,13 @@
 
 <div class="social-container">
 
+  <!-- PROFILE -->
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp" class="profile-img">
-  <h1 class="name">Xander Herdia-Leon</h1>
 
+  <!-- NAMETAG IMAGE -->
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777049118/nametag_v75q20.png" class="name-tag">
+
+  <!-- ICON GRID -->
   <div class="button-grid">
 
     <a href="https://www.facebook.com/"><img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776986363/facebook_m1jbkn.png"></a>
@@ -39,41 +43,7 @@
 
 </div>
 
-<script>
-const buttons = document.querySelectorAll('.button-grid a');
-
-buttons.forEach(btn => {
-  const img = btn.querySelector('img');
-
-  // SPIN on hover (retrigger every time)
-  btn.addEventListener('mouseenter', () => {
-    img.classList.remove('spin');
-    setTimeout(() => {
-      img.classList.add('spin');
-    }, 10);
-  });
-
-  // CLICK → fullscreen zoom → DELAY → open link
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const link = this.href;
-
-    const overlay = document.createElement('div');
-    overlay.className = 'fullscreen';
-
-    const clone = img.cloneNode();
-    overlay.appendChild(clone);
-
-    document.body.appendChild(overlay);
-
-    // ORIGINAL 400ms + EXTRA 2000ms = ~2400ms total delay
-    setTimeout(() => {
-      window.open(link, "_blank");
-      document.body.removeChild(overlay);
-    }, 1400);
-  });
-});
-</script>
+<!-- KEEP YOUR EXISTING SCRIPT BELOW -->
 
 </body>
 </html>
