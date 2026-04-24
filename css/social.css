@@ -1,9 +1,12 @@
-/* CONTAINER */
+/* CONTAINER FIX */
 .social-container {
+  width: 100%;          /* 🔥 FULL WIDTH FIX */
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+
+  margin-top: 120px; /* space for fixed nav */
 }
 
 /* PROFILE */
@@ -13,46 +16,50 @@
   border-radius: 50%;
   border: 3px solid gold;
 
-  box-shadow: 0 0 25px rgba(255,215,0,0.5);
+  box-shadow: 0 0 30px rgba(255,215,0,0.5);
 }
 
-/* NAME */
+/* NAME TAG */
 .name-tag {
   width: 420px;
+  max-width: 90%;
   margin: 20px 0;
 }
 
-/* 🔥 GRID FIX */
+/* GRID FIX */
 .button-grid {
+  width: 100%;
+  max-width: 400px;
+
   display: grid;
-  grid-template-columns: repeat(2, 120px);
+  grid-template-columns: repeat(2, 1fr);
   gap: 35px;
 
   margin-top: 20px;
 
-  /* IMPORTANT FIX */
-  overflow: visible;
+  justify-items: center;
 }
 
-/* 🔥 ICON FIX */
-.button-grid a {
-  display: block;
-  overflow: visible;
-}
-
+/* ICON FIX */
 .button-grid img {
   width: 120px;
   height: 120px;
   border-radius: 25px;
 
   box-shadow:
-    0 15px 40px rgba(0,0,0,0.9),
+    0 20px 40px rgba(0,0,0,0.9),
     0 0 25px rgba(255,215,0,0.25);
-
-  transition: transform 0.2s;
 }
 
-/* CLICK FEEL */
-.button-grid a:active img {
-  transform: scale(0.9);
+/* MOBILE */
+@media (max-width: 600px) {
+  .profile-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .button-grid {
+    max-width: 300px;
+    gap: 25px;
+  }
 }
