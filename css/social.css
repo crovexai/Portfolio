@@ -1,12 +1,12 @@
-/* CONTAINER FIX */
+/* MAIN CONTAINER */
 .social-container {
-  width: 100%;          /* 🔥 FULL WIDTH FIX */
-  max-width: 100%;
+  width: 100%;
+  max-width: 420px;   /* 🔥 FIX SQUEEZE */
+  margin: 120px auto 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin-top: 120px; /* space for fixed nav */
 }
 
 /* PROFILE */
@@ -16,39 +16,37 @@
   border-radius: 50%;
   border: 3px solid gold;
 
+  object-fit: cover;
+
   box-shadow: 0 0 30px rgba(255,215,0,0.5);
 }
 
-/* NAME TAG */
+/* NAME */
 .name-tag {
-  width: 420px;
-  max-width: 90%;
+  width: 90%;
+  max-width: 420px;
   margin: 20px 0;
 }
 
-/* GRID FIX */
+/* GRID */
 .button-grid {
   width: 100%;
-  max-width: 400px;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 35px;
-
-  margin-top: 20px;
+  gap: 30px;
 
   justify-items: center;
 }
 
-/* ICON FIX */
+/* ICONS */
 .button-grid img {
   width: 120px;
   height: 120px;
   border-radius: 25px;
 
   box-shadow:
-    0 20px 40px rgba(0,0,0,0.9),
-    0 0 25px rgba(255,215,0,0.25);
+    0 15px 40px rgba(0,0,0,0.9),
+    0 0 25px rgba(255,215,0,0.3);
 }
 
 /* MOBILE */
@@ -58,8 +56,8 @@
     height: 220px;
   }
 
-  .button-grid {
-    max-width: 300px;
-    gap: 25px;
+  .button-grid img {
+    width: 100px;
+    height: 100px;
   }
 }
