@@ -21,6 +21,7 @@ img {
   border: 3px solid gold;
 }
 
+/* NAME */
 .name {
   margin-top: 20px;
   font-size: 32px;
@@ -40,14 +41,6 @@ img {
   justify-content: center;
 }
 
-/* BUTTON */
-.button-grid a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 800px;
-}
-
 /* ICON */
 .button-grid img {
   width: 110px;
@@ -58,19 +51,9 @@ img {
   box-shadow:
     0 10px 25px rgba(0,0,0,0.8),
     0 0 15px rgba(255, 215, 0, 0.2);
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* HOVER GLOW */
-.button-grid a:hover img {
-  box-shadow:
-    0 15px 35px rgba(0,0,0,0.9),
-    0 0 25px rgba(255, 215, 0, 0.6),
-    0 0 60px rgba(255, 215, 0, 0.25);
-}
-
-/* 3D SPIN */
+/* SPIN ANIMATION */
 @keyframes spin3d {
   0%   { transform: rotateY(0deg) rotateX(0deg); }
   50%  { transform: rotateY(180deg) rotateX(10deg); }
@@ -81,21 +64,33 @@ img {
   animation: spin3d 0.8s ease;
 }
 
-/* FULLSCREEN ZOOM */
-.zoom-full {
+/* FULLSCREEN OVERLAY */
+.fullscreen {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100vw !important;
-  height: 100vh !important;
-
-  transform: translate(-50%, -50%) scale(1) !important;
-
-  object-fit: contain;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: black;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   z-index: 9999;
-  transition: all 0.5s ease;
+  animation: zoomIn 0.4s ease forwards;
+}
+
+/* ZOOM ANIMATION */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* MOBILE */
