@@ -6,7 +6,7 @@ body {
   color: white;
 }
 
-/* NAV BAR */
+/* ===== NAV BAR (DESKTOP DEFAULT) ===== */
 .nav {
   position: sticky;
   top: 0;
@@ -22,7 +22,6 @@ body {
   box-shadow: 0 2px 15px rgba(255, 215, 0, 0.2);
 }
 
-/* NAV LINKS */
 .nav a {
   color: gold;
   text-decoration: none;
@@ -42,19 +41,84 @@ body {
   text-shadow: 0 0 15px gold;
 }
 
-/* ===== MOBILE DOWNSIZE ===== */
+/* ===== HAMBURGER (HIDDEN ON DESKTOP) ===== */
+.hamburger {
+  display: none;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 22px;
+  color: gold;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* ===== MOBILE DRAWER ===== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100vh;
+
+  background: #f5f1e6; /* cream */
+  padding-top: 80px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.3s ease;
+  z-index: 1200;
+}
+
+/* OPEN STATE */
+.mobile-menu.open {
+  left: 0;
+}
+
+/* LINKS */
+.mobile-menu a {
+  color: black;
+  text-decoration: none;
+  padding: 18px 25px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* OVERLAY */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.3s;
+  z-index: 1100;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===== MOBILE MODE ===== */
 @media (max-width: 600px) {
 
-  .nav {
-    justify-content: space-between; /* spread evenly */
-    padding: 12px 8px;
+  /* hide desktop nav links */
+  .nav a {
+    display: none;
   }
 
-  .nav a {
-    margin: 0;
-    font-size: 11px;     /* ↓ smaller text */
-    letter-spacing: 1px; /* ↓ tighter */
-    flex: 1;             /* equal spacing */
-    text-align: center;
+  /* show hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* center empty nav bar */
+  .nav {
+    justify-content: center;
   }
 }
