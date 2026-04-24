@@ -32,13 +32,14 @@ body {
 
 .hero h1 {
   font-size: 48px;
+  margin: 0;
 }
 
 .hero p {
   color: #aaa;
 }
 
-/* ===== GRID (THIS WAS MISSING) ===== */
+/* ===== GRID (GALLERY FIX) ===== */
 
 .grid {
   display: grid;
@@ -47,14 +48,14 @@ body {
   padding: 20px;
 }
 
-/* FIRST IMAGE BIG */
+/* BIG FIRST IMAGE */
 
 .img-wrap.hero {
   grid-column: span 2;
   grid-row: span 2;
 }
 
-/* IMAGE */
+/* IMAGE WRAPPER */
 
 .img-wrap {
   position: relative;
@@ -121,50 +122,46 @@ body {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid #222;
 }
 
 .name {
   margin-top: 15px;
   font-size: 24px;
+  letter-spacing: 2px;
 }
 
-/* ICON ROW */
+/* ===== ICON ROW ===== */
 
 .icon-row {
   display: flex;
   gap: 25px;
   margin: 25px 0;
-}
-
-.icon-btn {
-  width: 55px;
-  height: 55px;
-  border: 1px solid #333;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  transition: 0.3s;
 }
 
-.icon-btn svg {
-  width: 26px;
-  height: 26px;
-  fill: white;
+/* GOLD ICON BUTTONS */
+
+.icon-img-btn {
+  width: 80px;
+  height: 80px;
+  display: block;
+  overflow: hidden;
 }
 
-.icon-btn:hover {
-  background: white;
+.icon-img-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.icon-btn:hover svg {
-  fill: black;
-}
+/* CENTER INSTAGRAM */
 
 .center-icon {
   transform: scale(1.15);
 }
 
-/* BUTTON STACK */
+/* ===== BUTTON STACK ===== */
 
 .button-stack {
   width: 100%;
@@ -174,17 +171,29 @@ body {
   gap: 12px;
 }
 
-.big-btn {
+/* GOLD IMAGE BUTTONS */
+
+.big-img-btn {
+  width: 100%;
+  max-width: 320px;
   display: block;
-  padding: 14px;
-  text-align: center;
-  border: 1px solid #333;
-  color: white;
-  text-decoration: none;
-  letter-spacing: 2px;
 }
 
-.big-btn:hover {
-  background: white;
-  color: black;
+.big-img-btn img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .icon-img-btn {
+    width: 65px;
+    height: 65px;
+  }
 }
