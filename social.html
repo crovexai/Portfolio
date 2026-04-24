@@ -23,7 +23,7 @@
   <!-- PROFILE -->
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1776844074/img-home-6_rhleyv.webp" class="profile-img">
 
-  <!-- NAMETAG IMAGE -->
+  <!-- NAMETAG -->
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777050098/nametag_mixp8t.png" class="name-tag">
 
   <!-- ICON GRID -->
@@ -43,7 +43,58 @@
 
 </div>
 
-<!-- KEEP YOUR EXISTING SCRIPT BELOW -->
+<script>
+const buttons = document.querySelectorAll('.button-grid a');
+
+buttons.forEach(btn => {
+  const img = btn.querySelector('img');
+
+  // SPIN ON EVERY HOVER (reliable retrigger)
+  btn.addEventListener('mouseenter', () => {
+    img.classList.remove('spin');
+    void img.offsetWidth; // force reflow
+    img.classList.add('spin');
+  });
+
+  // FULLSCREEN ZOOM + DELAYED OPEN
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const link = this.href;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'fullscreen';
+
+    const clone = img.cloneNode();
+    overlay.appendChild(clone);
+
+    document.body.appendChild(overlay);
+
+    setTimeout(() => {
+      window.open(link, "_blank");
+      document.body.removeChild(overlay);
+    }, 2400); // delay (you asked for slower)
+  });
+});
+
+
+/* OPTIONAL: NAMETAG TILT EFFECT */
+const nameTag = document.querySelector('.name-tag');
+
+nameTag.addEventListener('mousemove', (e) => {
+  const rect = nameTag.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  const rotateX = ((y / rect.height) - 0.5) * -10;
+  const rotateY = ((x / rect.width) - 0.5) * 10;
+
+  nameTag.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+});
+
+nameTag.addEventListener('mouseleave', () => {
+  nameTag.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+});
+</script>
 
 </body>
 </html>
